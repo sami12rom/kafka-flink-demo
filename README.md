@@ -19,7 +19,7 @@ If your README is long, add a table of contents to make it easy for users to fin
 - [License](#license)
 
 ## Design
-![alt text](./infrastructure/Confluent-Flink-Demo.drawio.png)
+[![alt text](./infrastructure/demo.png)](https://app.cloudcraft.co/view/a1e84540-b924-4a33-b1c9-f8044601c945?key=3m40jn0enpfd2t90&interactive=true&embed=true)
 
 
 ## Installation
