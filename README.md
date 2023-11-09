@@ -32,11 +32,8 @@ To add a screenshot, create an `assets/images` folder in your repository and upl
 This repo has been created by:
 |#|Name|Contact|
 |----|---|---|
-|1|Sami Alashabi|![https://www.linkedin.com/in/sami-alashabi/](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)|
-|2|Maria Berinde-Tampanariu|![https://www.linkedin.com/in/maria-berinde-tampanariu/](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)|
-
-
-![https://www.linkedin.com/in/sami-alashabi/](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)
+|1|Sami Alashabi|[![](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/sami-alashabi)|
+|2|Maria Berinde-Tampanariu|[![](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/maria-berinde-tampanariu)|
 
 ## Badges
 
