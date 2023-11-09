@@ -2,14 +2,6 @@
 
 
 # Elevating Analytics with Real-Time Data Streaming: A Deep Dive into Kafka
-
-Welcome to our repository, crafted to highlight the seamless integration and ease of use of Kafka. Dive into:
-
-1. Set up Confluent Cloud, Connectors & Flink.
-2. Set up Confluent Kafka Platform Locally
-
-
-## Technology
 ![Azure](https://img.shields.io/badge/azure-%230072C6.svg?style=for-the-badge&logo=microsoftazure&logoColor=white)
 ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
 ![Power Bi](https://img.shields.io/badge/power_bi-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)
@@ -17,26 +9,13 @@ Welcome to our repository, crafted to highlight the seamless integration and eas
 
 ![Databricks](https://img.shields.io/badge/Databricks-FF3621?style=for-the-badge&logo=Databricks&logoColor=white)
 ![Pyspark](https://img.shields.io/badge/Apache_Spark-FFFFFF?style=for-the-badge&logo=apachespark&logoColor=#E35A16)
-![Kafka](https://img.shields.io/badge/Apache_Kafka-231F20?style=for-the-badge&logo=apache-kafka&logoColor=white)
 
 
-## Design
-[![infrastructure](./docs/infrastructure.png)](https://app.cloudcraft.co/view/a1e84540-b924-4a33-b1c9-f8044601c945?key=3m40jn0enpfd2t90&interactive=true&embed=true)
+Welcome to our repository, crafted to highlight the seamless integration and ease of use of Kafka. Dive into:
 
+1. Set up Confluent Cloud, Connectors & Flink.
+2. Set up Confluent Kafka Platform Locally
 
-## Installation
-
-What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.
-
-## Usage
-
-Provide instructions and examples for use. Include screenshots as needed.
-
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
-
-    ```md
-    ![alt text](assets/images/screenshot.png)
-    ```
 
 ## Created by
 
@@ -47,8 +26,24 @@ This repo has been created by:
 |2|Maria Berinde-Tampanariu|[![](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/maria-berinde-tampanariu)|
 
 
-## References
-* https://docs.google.com/presentation/d/1lTWvNwJgJphgH6YUYEL9AiE-nlDidsqMNJF_MiJryl4/edit?exids=71471483,71471477&pli=1#slide=id.g1ea5efd3fa5_0_3148
-* https://github.com/ifnesi/cc_flink_terraform
-* https://github.com/MartijnVisser/flink-only-sql
-* https://www.ismiletechnologies.com/technology/implementation-of-apache-kafka-recommendation/#
+
+## Design
+[![infrastructure](./docs/infrastructure.png)](https://app.cloudcraft.co/view/a1e84540-b924-4a33-b1c9-f8044601c945?key=3m40jn0enpfd2t90&interactive=true&embed=true)
+
+
+## Slides
+https://docs.google.com/presentation/d/1lTWvNwJgJphgH6YUYEL9AiE-nlDidsqMNJF_MiJryl4/edit?exids=71471483,71471477&pli=1#slide=id.g1ea5efd3fa5_0_3148
+
+
+
+## Installation
+
+
+
+## Usage
+
+
+    ```md
+    
+    ```
+
