@@ -32,8 +32,7 @@ This repo has been created by:
 
 
 ## Slides
-https://docs.google.com/presentation/d/1lTWvNwJgJphgH6YUYEL9AiE-nlDidsqMNJF_MiJryl4/edit?exids=71471483,71471477&pli=1#slide=id.g1ea5efd3fa5_0_3148
-
+[![Google Slides Badge](https://img.shields.io/badge/Google%20Slides-FBBC04?logo=googleslides&logoColor=000&style=for-the-badge)](https://docs.google.com/presentation/d/1lTWvNwJgJphgH6YUYEL9AiE-nlDidsqMNJF_MiJryl4/edit?exids=71471483,71471477&pli=1#slide=id.g1ea5efd3fa5_0_3148)
 
 
 ## Installation
