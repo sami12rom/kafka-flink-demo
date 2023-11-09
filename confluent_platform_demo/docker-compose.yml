@@ -2,14 +2,14 @@
 version: '2'
 services:
 
-  postgres:
-    image: postgres
-    container_name: postgres
-    ports:
-      - 5433:5432
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+  # postgres:
+  #   image: postgres
+  #   container_name: postgres
+  #   ports:
+  #     - 5433:5432
+  #   environment:
+  #     - POSTGRES_USER=postgres
+  #     - POSTGRES_PASSWORD=postgres
 
   broker:
     image: confluentinc/cp-kafka:7.5.1
@@ -37,6 +37,10 @@ services:
       # Replace CLUSTER_ID with a unique base64 UUID using "bin/kafka-storage.sh random-uuid" 
       # See https://docs.confluent.io/kafka/operations-tools/kafka-tools.html#kafka-storage-sh
       CLUSTER_ID: 'MkU3OEVBNTcwNTJENDM2Qk'
+      KAFKA_CONFLUENT_CLUSTER_LINK_ENABLE: "true"
+      # KAFKA_METRIC_REPORTERS: io.confluent.metrics.reporter.ConfluentMetricsReporter
+      # CONFLUENT_METRICS_REPORTER_BOOTSTRAP_SERVERS: broker:29092,localhost:9092
+      # KAFKA_METRIC_REPORTERS: "io.confluent.telemetry.reporter.TelemetryReporter"
 
   schema-registry:
     image: confluentinc/cp-schema-registry:7.5.1
@@ -99,13 +103,14 @@ services:
       CONTROL_CENTER_BOOTSTRAP_SERVERS: 'broker:29092'
       CONTROL_CENTER_CONNECT_CONNECT-DEFAULT_CLUSTER: 'connect:8083'
       CONTROL_CENTER_CONNECT_HEALTHCHECK_ENDPOINT: '/connectors'
-      CONTROL_CENTER_KSQL_KSQLDB1_URL: "http://ksqldb-server:8088"
+      #CONTROL_CENTER_KSQL_KSQLDB1_URL: "http://ksqldb-server:8088"
       CONTROL_CENTER_KSQL_KSQLDB1_ADVERTISED_URL: "http://localhost:8088"
       CONTROL_CENTER_SCHEMA_REGISTRY_URL: "http://schema-registry:8081"
       CONTROL_CENTER_REPLICATION_FACTOR: 1
       CONTROL_CENTER_INTERNAL_TOPICS_PARTITIONS: 1
       CONTROL_CENTER_MONITORING_INTERCEPTOR_TOPIC_PARTITIONS: 1
       CONFLUENT_METRICS_TOPIC_REPLICATION: 1
+      METRIC_REPORTERS: io.confluent.telemetry.reporter.TelemetryReporter
       PORT: 9021
 
   # ksqldb-server:
@@ -178,57 +183,57 @@ services:
       KAFKA_REST_LISTENERS: "http://0.0.0.0:8082"
       KAFKA_REST_SCHEMA_REGISTRY_URL: 'http://schema-registry:8081'
 
-  sql-client:
-    build:
-      context: image
-      dockerfile: flink.Dockerfile
-    command: bin/sql-client.sh
-    tty: true
-    depends_on:
-      - jobmanager
-    environment:
-      - |
-        FLINK_PROPERTIES=
-        jobmanager.rpc.address: jobmanager
-        rest.address: jobmanager
+#   sql-client:
+#     build:
+#       context: image
+#       dockerfile: flink.Dockerfile
+#     command: bin/sql-client.sh
+#     tty: true
+#     depends_on:
+#       - jobmanager
+#     environment:
+#       - |
+#         FLINK_PROPERTIES=
+#         jobmanager.rpc.address: jobmanager
+#         rest.address: jobmanager
 
-  jobmanager:
-    build:
-      context: image
-      dockerfile: flink.Dockerfile
-    ports:
-      - "9081:9081"
-    command: jobmanager
-    volumes:
-      - flink_data:/tmp/
-    environment:
-      - |
-        FLINK_PROPERTIES=
-        jobmanager.rpc.address: jobmanager
-        state.backend: filesystem
-        state.checkpoints.dir: file:///tmp/flink-checkpoints
-        heartbeat.interval: 1000
-        heartbeat.timeout: 5000
-        rest.flamegraph.enabled: true
-        web.backpressure.refresh-interval: 10000
+#   jobmanager:
+#     build:
+#       context: image
+#       dockerfile: flink.Dockerfile
+#     ports:
+#       - "9081:9081"
+#     command: jobmanager
+#     volumes:
+#       - flink_data:/tmp/
+#     environment:
+#       - |
+#         FLINK_PROPERTIES=
+#         jobmanager.rpc.address: jobmanager
+#         state.backend: filesystem
+#         state.checkpoints.dir: file:///tmp/flink-checkpoints
+#         heartbeat.interval: 1000
+#         heartbeat.timeout: 5000
+#         rest.flamegraph.enabled: true
+#         web.backpressure.refresh-interval: 10000
 
-  taskmanager:
-    build:
-      context: image
-      dockerfile: flink.Dockerfile
-    depends_on:
-      - jobmanager
-    command: taskmanager
-    volumes:
-      - flink_data:/tmp/
-    environment:
-      - |
-        FLINK_PROPERTIES=
-        jobmanager.rpc.address: jobmanager
-        taskmanager.numberOfTaskSlots: 3
-        state.backend: filesystem
-        state.checkpoints.dir: file:///tmp/flink-checkpoints
-        heartbeat.interval: 1000
-        heartbeat.timeout: 5000
-volumes:
-  flink_data:
+#   taskmanager:
+#     build:
+#       context: image
+#       dockerfile: flink.Dockerfile
+#     depends_on:
+#       - jobmanager
+#     command: taskmanager
+#     volumes:
+#       - flink_data:/tmp/
+#     environment:
+#       - |
+#         FLINK_PROPERTIES=
+#         jobmanager.rpc.address: jobmanager
+#         taskmanager.numberOfTaskSlots: 3
+#         state.backend: filesystem
+#         state.checkpoints.dir: file:///tmp/flink-checkpoints
+#         heartbeat.interval: 1000
+#         heartbeat.timeout: 5000
+# volumes:
+#   flink_data:

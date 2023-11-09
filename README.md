@@ -1,6 +1,6 @@
-# Confluent Kafka - Flink Demo
+![logo](docs/logos.png)
 
-## Description
+# Introduction
 
 Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
 
@@ -9,17 +9,8 @@ Provide a short description explaining the what, why, and how of your project. U
 - What problem does it solve?
 - What did you learn?
 
-## Table of Contents (Optional)
-
-If your README is long, add a table of contents to make it easy for users to find what they need.
-
-- [Installation](#installation)
-- [Usage](#usage)
-- [Credits](#credits)
-- [License](#license)
-
 ## Design
-[![alt text](./infrastructure/demo.png)](https://app.cloudcraft.co/view/a1e84540-b924-4a33-b1c9-f8044601c945?key=3m40jn0enpfd2t90&interactive=true&embed=true)
+[![infrastructure](./docs/infrastructure.png)](https://app.cloudcraft.co/view/a1e84540-b924-4a33-b1c9-f8044601c945?key=3m40jn0enpfd2t90&interactive=true&embed=true)
 
 
 ## Installation
@@ -36,28 +27,24 @@ To add a screenshot, create an `assets/images` folder in your repository and upl
     ![alt text](assets/images/screenshot.png)
     ```
 
-## Credits
+## Created by
 
-List your collaborators, if any, with links to their GitHub profiles.
+This repo has been created by:
+|#|Name|Contact|
+|----|---|---|
+|1|Sami Alashabi|![https://www.linkedin.com/in/sami-alashabi](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)|
+|2|Maria Berinde-Tampanariu|![https://www.linkedin.com/in/maria-berinde-tampanariu/](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)|
 
-If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.
 
-If you followed tutorials, include links to those here as well.
-
-## License
-
-The last section of a high-quality README file is the license. This lets other developers know what they can and cannot do with your project. If you need help choosing a license, refer to [https://choosealicense.com/](https://choosealicense.com/).
-
----
-
-🏆 The previous sections are the bare minimum, and your project will ultimately determine the content of this document. You might also want to consider adding the following sections.
 
 ## Badges
 
 ![badmath](https://img.shields.io/github/languages/top/lernantino/badmath)
 
-Badges aren't necessary, per se, but they demonstrate street cred. Badges let other developers know that you know what you're doing. Check out the badges hosted by [shields.io](https://shields.io/). You may not understand what they all represent now, but you will in time.
 
-## Contact us
 
-![https://www.linkedin.com/in/sami-alashabi](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)
+## References
+* https://docs.google.com/presentation/d/1lTWvNwJgJphgH6YUYEL9AiE-nlDidsqMNJF_MiJryl4/edit?exids=71471483,71471477&pli=1#slide=id.g1ea5efd3fa5_0_3148
+* https://github.com/ifnesi/cc_flink_terraform
+* https://github.com/MartijnVisser/flink-only-sql
+* https://www.ismiletechnologies.com/technology/implementation-of-apache-kafka-recommendation/#

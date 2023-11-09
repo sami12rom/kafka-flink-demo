@@ -1,1 +1,11 @@
 *.DS*
+.DS_Store
+*.status*
+.terraform
+*.hcl
+*.backup
+*.pkg
+*.tfstate
+*.info
+.env
+schemas/credit_card_timestamp.avsc
