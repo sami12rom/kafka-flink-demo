@@ -247,7 +247,7 @@ resource "confluent_tag" "pii" {
     secret = confluent_api_key.sr_cluster_key.secret
   }
 
-  name = "PII"
+  name        = "PII"
   description = "PII tag"
 
   lifecycle {

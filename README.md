@@ -83,13 +83,15 @@ export CONFLUENT_CLOUD_API_SECRET="Enter credentials here"
 
 | Name | Version |
 |------|---------|
+| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | =3.0.0 |
 | <a name="requirement_confluent"></a> [confluent](#requirement\_confluent) | 1.55.0 |
-| <a name="requirement_external"></a> [external](#requirement\_external) | 2.3.1 |
+| <a name="requirement_random"></a> [random](#requirement\_random) | ~>3.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
+| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | 3.0.0 |
 | <a name="provider_confluent"></a> [confluent](#provider\_confluent) | 1.55.0 |
 | <a name="provider_random"></a> [random](#provider\_random) | 3.5.1 |
 
@@ -97,29 +99,47 @@ export CONFLUENT_CLOUD_API_SECRET="Enter credentials here"
 
 | Name | Type |
 |------|------|
-| [confluent_api_key.app_manager_kafka_cluster_key](https://registry.terraform.io/providers/confluentinc/confluent/1.55.0/docs/resources/confluent_api_key) | resource |
-| [confluent_api_key.clients_kafka_cluster_key](https://registry.terraform.io/providers/confluentinc/confluent/1.55.0/docs/resources/confluent_api_key) | resource |
-| [confluent_api_key.sr_cluster_key](https://registry.terraform.io/providers/confluentinc/confluent/1.55.0/docs/resources/confluent_api_key) | resource |
-| [confluent_environment.cc_demo_env](https://registry.terraform.io/providers/confluentinc/confluent/1.55.0/docs/resources/confluent_environment) | resource |
-| [confluent_flink_compute_pool.cc_flink_compute_pool](https://registry.terraform.io/providers/confluentinc/confluent/1.55.0/docs/resources/confluent_flink_compute_pool) | resource |
-| [confluent_kafka_cluster.cc_kafka_cluster](https://registry.terraform.io/providers/confluentinc/confluent/1.55.0/docs/resources/confluent_kafka_cluster) | resource |
-| [confluent_role_binding.app_manager_environment_admin](https://registry.terraform.io/providers/confluentinc/confluent/1.55.0/docs/resources/confluent_role_binding) | resource |
-| [confluent_role_binding.clients_cluster_admin](https://registry.terraform.io/providers/confluentinc/confluent/1.55.0/docs/resources/confluent_role_binding) | resource |
-| [confluent_role_binding.demo-rb](https://registry.terraform.io/providers/confluentinc/confluent/1.55.0/docs/resources/confluent_role_binding) | resource |
-| [confluent_role_binding.sr_environment_admin](https://registry.terraform.io/providers/confluentinc/confluent/1.55.0/docs/resources/confluent_role_binding) | resource |
-| [confluent_schema_registry_cluster.cc_sr_cluster](https://registry.terraform.io/providers/confluentinc/confluent/1.55.0/docs/resources/confluent_schema_registry_cluster) | resource |
-| [confluent_service_account.app_manager](https://registry.terraform.io/providers/confluentinc/confluent/1.55.0/docs/resources/confluent_service_account) | resource |
-| [confluent_service_account.clients](https://registry.terraform.io/providers/confluentinc/confluent/1.55.0/docs/resources/confluent_service_account) | resource |
-| [confluent_service_account.demo-sa](https://registry.terraform.io/providers/confluentinc/confluent/1.55.0/docs/resources/confluent_service_account) | resource |
-| [confluent_service_account.sr](https://registry.terraform.io/providers/confluentinc/confluent/1.55.0/docs/resources/confluent_service_account) | resource |
-| [confluent_tag.pii](https://registry.terraform.io/providers/confluentinc/confluent/1.55.0/docs/resources/confluent_tag) | resource |
+| [azurerm_dev_test_global_vm_shutdown_schedule.myschedule](https://registry.terraform.io/providers/hashicorp/azurerm/3.0.0/docs/resources/dev_test_global_vm_shutdown_schedule) | resource |
+| [azurerm_network_interface.my_terraform_nic](https://registry.terraform.io/providers/hashicorp/azurerm/3.0.0/docs/resources/network_interface) | resource |
+| [azurerm_network_interface_security_group_association.example](https://registry.terraform.io/providers/hashicorp/azurerm/3.0.0/docs/resources/network_interface_security_group_association) | resource |
+| [azurerm_network_security_group.my_terraform_nsg](https://registry.terraform.io/providers/hashicorp/azurerm/3.0.0/docs/resources/network_security_group) | resource |
+| [azurerm_public_ip.my_terraform_public_ip](https://registry.terraform.io/providers/hashicorp/azurerm/3.0.0/docs/resources/public_ip) | resource |
+| [azurerm_storage_account.mystorage](https://registry.terraform.io/providers/hashicorp/azurerm/3.0.0/docs/resources/storage_account) | resource |
+| [azurerm_storage_container.example](https://registry.terraform.io/providers/hashicorp/azurerm/3.0.0/docs/resources/storage_container) | resource |
+| [azurerm_subnet.my_terraform_subnet](https://registry.terraform.io/providers/hashicorp/azurerm/3.0.0/docs/resources/subnet) | resource |
+| [azurerm_virtual_network.my_terraform_network](https://registry.terraform.io/providers/hashicorp/azurerm/3.0.0/docs/resources/virtual_network) | resource |
+| [azurerm_windows_virtual_machine.main](https://registry.terraform.io/providers/hashicorp/azurerm/3.0.0/docs/resources/windows_virtual_machine) | resource |
+| [confluent_api_key.app_manager_kafka_cluster_key](https://registry.terraform.io/providers/confluentinc/confluent/1.55.0/docs/resources/api_key) | resource |
+| [confluent_api_key.clients_kafka_cluster_key](https://registry.terraform.io/providers/confluentinc/confluent/1.55.0/docs/resources/api_key) | resource |
+| [confluent_api_key.sr_cluster_key](https://registry.terraform.io/providers/confluentinc/confluent/1.55.0/docs/resources/api_key) | resource |
+| [confluent_custom_connector_plugin.sink](https://registry.terraform.io/providers/confluentinc/confluent/1.55.0/docs/resources/custom_connector_plugin) | resource |
+| [confluent_environment.cc_demo_env](https://registry.terraform.io/providers/confluentinc/confluent/1.55.0/docs/resources/environment) | resource |
+| [confluent_flink_compute_pool.cc_flink_compute_pool](https://registry.terraform.io/providers/confluentinc/confluent/1.55.0/docs/resources/flink_compute_pool) | resource |
+| [confluent_kafka_cluster.cc_kafka_cluster](https://registry.terraform.io/providers/confluentinc/confluent/1.55.0/docs/resources/kafka_cluster) | resource |
+| [confluent_kafka_topic.credit_card](https://registry.terraform.io/providers/confluentinc/confluent/1.55.0/docs/resources/kafka_topic) | resource |
+| [confluent_kafka_topic.pageviews](https://registry.terraform.io/providers/confluentinc/confluent/1.55.0/docs/resources/kafka_topic) | resource |
+| [confluent_role_binding.app_manager_environment_admin](https://registry.terraform.io/providers/confluentinc/confluent/1.55.0/docs/resources/role_binding) | resource |
+| [confluent_role_binding.clients_cluster_admin](https://registry.terraform.io/providers/confluentinc/confluent/1.55.0/docs/resources/role_binding) | resource |
+| [confluent_role_binding.demo-rb](https://registry.terraform.io/providers/confluentinc/confluent/1.55.0/docs/resources/role_binding) | resource |
+| [confluent_role_binding.sr_environment_admin](https://registry.terraform.io/providers/confluentinc/confluent/1.55.0/docs/resources/role_binding) | resource |
+| [confluent_schema_registry_cluster.cc_sr_cluster](https://registry.terraform.io/providers/confluentinc/confluent/1.55.0/docs/resources/schema_registry_cluster) | resource |
+| [confluent_service_account.app_manager](https://registry.terraform.io/providers/confluentinc/confluent/1.55.0/docs/resources/service_account) | resource |
+| [confluent_service_account.clients](https://registry.terraform.io/providers/confluentinc/confluent/1.55.0/docs/resources/service_account) | resource |
+| [confluent_service_account.connectors](https://registry.terraform.io/providers/confluentinc/confluent/1.55.0/docs/resources/service_account) | resource |
+| [confluent_service_account.demo-sa](https://registry.terraform.io/providers/confluentinc/confluent/1.55.0/docs/resources/service_account) | resource |
+| [confluent_service_account.sr](https://registry.terraform.io/providers/confluentinc/confluent/1.55.0/docs/resources/service_account) | resource |
+| [confluent_tag.pii](https://registry.terraform.io/providers/confluentinc/confluent/1.55.0/docs/resources/tag) | resource |
 | [random_id.id](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/id) | resource |
+| [random_pet.prefix](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/pet) | resource |
+| [azurerm_resource_group.demo](https://registry.terraform.io/providers/hashicorp/azurerm/3.0.0/docs/data-sources/resource_group) | data source |
 | [confluent_schema_registry_region.cc_demo_sr](https://registry.terraform.io/providers/confluentinc/confluent/1.55.0/docs/data-sources/schema_registry_region) | data source |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_admin_password"></a> [admin\_password](#input\_admin\_password) | n/a | `any` | n/a | yes |
+| <a name="input_admin_username"></a> [admin\_username](#input\_admin\_username) | -------------------------------------------- Azure -------------------------------------------- | `any` | n/a | yes |
 | <a name="input_cc_availability"></a> [cc\_availability](#input\_cc\_availability) | n/a | `string` | `"SINGLE_ZONE"` | no |
 | <a name="input_cc_cloud_provider"></a> [cc\_cloud\_provider](#input\_cc\_cloud\_provider) | ---------------------------------------- Confluent Cloud Kafka cluster variables ---------------------------------------- | `string` | `"AWS"` | no |
 | <a name="input_cc_cloud_region"></a> [cc\_cloud\_region](#input\_cc\_cloud\_region) | n/a | `string` | `"eu-central-1"` | no |
@@ -141,4 +161,4 @@ export CONFLUENT_CLOUD_API_SECRET="Enter credentials here"
 | <a name="output_cc_demo_sr"></a> [cc\_demo\_sr](#output\_cc\_demo\_sr) | CC Schema Registry Region |
 | <a name="output_cc_kafka_cluster"></a> [cc\_kafka\_cluster](#output\_cc\_kafka\_cluster) | CC Kafka Cluster ID |
 | <a name="output_cc_sr_cluster"></a> [cc\_sr\_cluster](#output\_cc\_sr\_cluster) | CC SR Cluster ID |
-<!-- END_TF_DOCS -->
+| <a name="output_id"></a> [id](#output\_id) | n/a |

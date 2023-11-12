@@ -17,8 +17,8 @@ resource "confluent_kafka_topic" "pageviews" {
   kafka_cluster {
     id = confluent_kafka_cluster.cc_kafka_cluster.id
   }
-  topic_name    = "demo-pageviews"
-  rest_endpoint = confluent_kafka_cluster.cc_kafka_cluster.rest_endpoint
+  topic_name       = "demo-pageviews"
+  rest_endpoint    = confluent_kafka_cluster.cc_kafka_cluster.rest_endpoint
   partitions_count = 6
   credentials {
     key    = confluent_api_key.app_manager_kafka_cluster_key.id
@@ -33,8 +33,8 @@ resource "confluent_kafka_topic" "credit_card" {
   kafka_cluster {
     id = confluent_kafka_cluster.cc_kafka_cluster.id
   }
-  topic_name    = "demo-credit-card"
-  rest_endpoint = confluent_kafka_cluster.cc_kafka_cluster.rest_endpoint
+  topic_name       = "demo-credit-card"
+  rest_endpoint    = confluent_kafka_cluster.cc_kafka_cluster.rest_endpoint
   partitions_count = 6
   credentials {
     key    = confluent_api_key.app_manager_kafka_cluster_key.id
