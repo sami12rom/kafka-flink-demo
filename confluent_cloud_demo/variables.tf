@@ -73,3 +73,9 @@ variable "cc_compute_pool_cfu" {
   type    = number
   default = 5
 }
+
+# --------------------------------------------
+# Azure
+# --------------------------------------------
+variable "admin_username" {}
+variable "admin_password" {}

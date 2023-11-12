@@ -46,6 +46,19 @@ resource "confluent_kafka_topic" "credit_card" {
 }
 
 # --------------------------------------------------------
+# Custom Connectors
+# --------------------------------------------------------
+resource "confluent_custom_connector_plugin" "sink" {
+  # https://docs.confluent.io/cloud/current/connectors/bring-your-connector/custom-connector-qs.html#custom-connector-quick-start
+  display_name                = "Azure Blob Storage Sink Connector"
+  documentation_link          = "https://docs.confluent.io/kafka-connectors/azure-blob-storage-sink/current/overview.html"
+  connector_class             = "io.confluent.connect.azure.blob.AzureBlobStorageSinkConnector"
+  connector_type              = "SINK"
+  sensitive_config_properties = ["azblob.account.key"]
+  filename                    = "../confluent_platform_demo/plugins/confluentinc-kafka-connect-azure-blob-storage-1.6.18.zip"
+}
+
+# --------------------------------------------------------
 # Connectors
 # --------------------------------------------------------
 
