@@ -132,6 +132,8 @@ select * from `demo-users`;
 
 ```
 
+### Table Model
+<iframe width="560" height="315" src='https://dbdiagram.io/e/655297567d8bbd64651b96b9/6552975f7d8bbd64651b975b'> </iframe>
 
 ## Stop Demo
 - Run command: `./demo_stop.sh`

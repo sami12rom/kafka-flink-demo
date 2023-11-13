@@ -1,14 +1,14 @@
-# resource "random_pet" "prefix" {
-#   prefix = "win-vm-iis"
-#   length = 1
-# }
+resource "random_pet" "prefix" {
+  prefix = "win-vm-iis"
+  length = 1
+}
 
-# data "azurerm_resource_group" "demo" {
-#   name = "MCD_Sandbox_Sami"
-# }
-# output "id" {
-#   value = data.azurerm_resource_group.demo.id
-# }
+data "azurerm_resource_group" "demo" {
+  name = "MCD_Sandbox_Sami"
+}
+output "id" {
+  value = data.azurerm_resource_group.demo.id
+}
 
 # # Create virtual network
 # resource "azurerm_virtual_network" "my_terraform_network" {

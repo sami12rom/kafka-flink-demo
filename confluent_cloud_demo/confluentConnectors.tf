@@ -111,7 +111,8 @@ resource "confluent_connector" "datagen_credit_card" {
     "kafka.service.account.id" = confluent_service_account.connectors.id
     "kafka.topic"              = confluent_kafka_topic.credit_card.topic_name
     "output.data.format"       = "AVRO"
-    "schema.string"            = data.external.env_vars.result.CREDIT_CARD_SCHEMA
+    # "quickstart"               = "credit_cards"
+    "schema.string"            = file("./schemas/credit_card.avsc")
     "schema.keyfield"          = "userid"
     "tasks.max"                = "1"
     "max.interval"             = "500"
