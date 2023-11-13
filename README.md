@@ -69,13 +69,68 @@ export CONFLUENT_CLOUD_API_SECRET="Enter credentials here"
 ```
 ## Start Demo
 - Run command: `./demo_start.sh`
+- Access Confluent Cloud: https://confluent.cloud/login
+- Select your Environment
+- Select tab `Flink (preview)`
+- Access your Flink Compute Pool
+- Click `Open SQL Workspace`
+<img src="docs/flinktTab.png" width="70%">
 
+
+## Flink Compute Pool
+- Select Catalog: `kafka_flink_demo_xx`
+- Select Database: `cc-demo-cluster`
+<img src="docs/flinkSQL.png" width="70%">
+- Proceed to submit the below SQL queries (one at each tab):
+
+```sql
+
+--------------------------------------------------------
+-- View demo-pageviews table (from topic with same name)
+--------------------------------------------------------
+describe extended `demo-pageviews`;
+
+---------------------------------------
+select * from `demo-pageviews`;
+---------------------------------------
+
+---------------------------------------------------------------
+-- Create table demo-users (topic with same name to be created)
+---------------------------------------------------------------
+CREATE TABLE `demo-users` (
+  `userid` STRING,
+  `full_name` STRING,
+  `regionid` STRING,
+  `gender` STRING,
+  `avg_credit_spend` DOUBLE
+) WITH (
+  'changelog.mode' = 'retract'
+);
+
+----------------------------------------------------------------------
+-- Populate table demo-users (see new messages published in the topic)
+----------------------------------------------------------------------
+INSERT INTO `demo-users` (`userid`, `full_name`, `regionid`, `gender`,  `avg_credit_spend`) 
+VALUES
+  ('User_1', 'Blake Lambert', 'Region_10', 'MALE', 2650.0),
+  ('User_2', 'Olivia Anderson', 'Region_20', 'FEMALE', 5721.0),
+  ('User_3', 'Evan Hughes', 'Region_30', 'MALE', 4822.0),
+  ('User_4', 'Sonia Marshall', 'Region_40', 'FEMALE', 2629.0),
+  ('User_5', 'Benjamin Stewart', 'Region_50', 'MALE', 1455.0),
+  ('User_6', 'Caroline Coleman', 'Region_60', 'FEMALE', 3999.0),
+  ('User_7', 'Oliver Chapman', 'Region_70', 'MALE', 40233.0),
+  ('User_8', 'Rose Skinner', 'Region_80', 'FEMALE', 4611.0),
+  ('User_9', 'Bernadette Cameron', 'Region_90', 'OTHER', 5623.0);
+
+---------------------------------------
+select * from `demo-users`;
+---------------------------------------
+
+```
 
 
 ## Stop Demo
 - Run command: `./demo_stop.sh`
-
-
 
 
 # Terraform Documentation

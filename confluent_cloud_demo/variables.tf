@@ -39,6 +39,14 @@ variable "cc_availability" {
 
 
 # ------------------------------------------
+# Confluent Cloud Connectors variables
+# ------------------------------------------
+variable "acl_operation" {
+  type = list
+  default = ["CREATE", "WRITE", "READ"]
+}
+
+# ------------------------------------------
 # Confluent Cloud Schema Registry variables
 # ------------------------------------------
 variable "sr_cloud_provider" {
