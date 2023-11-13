@@ -138,13 +138,14 @@ resource "azurerm_storage_container" "example" {
   container_access_type = "container"
 }
 
-# resource "azurerm_databricks_workspace" "demo" {
-#   name                = var.cc_env_name
-#   resource_group_name = data.azurerm_resource_group.demo.name
-#   location            = data.azurerm_resource_group.demo.location
-#   sku                 = "trial"
+# Databricks
+resource "azurerm_databricks_workspace" "demo" {
+  name                = var.cc_env_name
+  resource_group_name = data.azurerm_resource_group.demo.name
+  location            = data.azurerm_resource_group.demo.location
+  sku                 = "trial"
 
-#   tags = {
-#     Environment = var.cc_env_name
-#   }
-# }
+  tags = {
+    Environment = var.cc_env_name
+  }
+}

@@ -9,3 +9,5 @@
 *.info
 .env
 schemas/credit_card_timestamp.avsc
+*.gob
+manifest*.json
