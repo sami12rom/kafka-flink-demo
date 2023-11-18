@@ -76,47 +76,158 @@ export CONFLUENT_CLOUD_API_SECRET="Enter credentials here"
 - Select tab `Flink (preview)`
 - Access your Flink Compute Pool
 - Click `Open SQL Workspace`
+
 <img src="docs/flinktTab.png" width="70%">
 
 
 ## Flink Compute Pool
 - Select Catalog: `kafka_flink_demo_xx`
 - Select Database: `cc-demo-cluster`
+
 <img src="docs/flinkSQL.png" width="70%">
+
 - Proceed to submit the below SQL queries (one at each tab):
 
 ```sql
 
 ---------------------------------------------------------------
--- Create table demo-users (topic with same name to be created)
+-- Create table users (A topic with same name will be created)
 ---------------------------------------------------------------
-CREATE TABLE `demo-users` (
-  `userid` STRING,
-  `full_name` STRING,
-  `regionid` STRING,
+CREATE TABLE `users` (
+  `userid` INT,
+  `fullname` STRING,
+  `credit_card_last_four_digits` STRING,
   `gender` STRING,
+  `email` STRING,  
+  `ipaddress` STRING,
+  `company` STRING,  
   `avg_credit_spend` DOUBLE
 ) WITH (
   'changelog.mode' = 'retract'
 );
 
-describe extended `demo-users`;
+describe extended `users`;
 
-----------------------------------------------------------------------
--- Populate table demo-users (see new messages published in the topic)
-----------------------------------------------------------------------
-INSERT INTO `demo-users` (`userid`, `full_name`, `regionid`, `gender`,  `avg_credit_spend`) VALUES
-  ('User_1', 'Blake Lambert', 'Region_10', 'MALE', 2650.0),
-  ('User_2', 'Olivia Anderson', 'Region_20', 'FEMALE', 5721.0),
-  ('User_3', 'Evan Hughes', 'Region_30', 'MALE', 4822.0),
-  ('User_4', 'Sonia Marshall', 'Region_40', 'FEMALE', 2629.0),
-  ('User_5', 'Benjamin Stewart', 'Region_50', 'MALE', 1455.0),
-  ('User_6', 'Caroline Coleman', 'Region_60', 'FEMALE', 3999.0),
-  ('User_7', 'Oliver Chapman', 'Region_70', 'MALE', 40233.0),
-  ('User_8', 'Rose Skinner', 'Region_80', 'FEMALE', 4611.0),
-  ('User_9', 'Bernadette Cameron', 'Region_90', 'OTHER', 5623.0);
+--------------------------------------------------------------------------
+-- Populate table users (You will see new messages published in the topic)
+--------------------------------------------------------------------------
+INSERT INTO `users` (`userid`, `fullname`,`credit_card_last_four_digits`, `gender`, `email`, `ipaddress`, `company`, `avg_credit_spend`) VALUES
+(1, 'Lodovico Hinemoor', '1234', 'Male', 'lhinemoor0@wix.com', '72.197.144.165', 'Dynabox', 2650.0),
+(2, 'Panchito Mitchiner', '2345', 'Genderfluid', 'pmitchiner1@senate.gov', '13.246.111.16', 'Aivee', 4119.27),
+(3, 'Zachery Townley', '3456', 'Male', 'ztownley2@mail.ru', '197.231.118.1', 'Fanoodle', 2119.76),
+(4, 'Juli Barcroft', '4567', 'Female', 'jbarcroft3@t-online.de', '138.246.248.76', 'Yodo', 1271.58),
+(5, 'Elisabeth Gentry', '5678', 'Female', 'egentry4@homestead.com', '236.176.123.77', 'Skaboo', 2783.47),
+(6, 'Richart Bradfield', '6789', 'Male', 'rbradfield5@amazon.co.uk', '71.180.87.61', 'Meejo', 2154.45),
+(7, 'Helene Hargrove', '7890', 'Female', 'hhargrove6@51.la', '240.88.89.167', 'Browsebug', 2333.36),
+(8, 'Benji Geck', '8901', 'Male', 'bgeck7@sun.com', '250.2.253.193', 'Yombu', 3999.74),
+(9, 'Gannie O''Brollachain', '9012', 'Non-binary', 'gobrollachain8@technorati.com', '185.20.56.89', 'Einti', 3817.99),
+(10, 'Elyn Cromarty', '0123', 'Female', 'ecromarty9@ask.com', '167.68.56.180', 'Shufflester', 5263.34),
+(11, 'Hurley Cochrane', '1111', 'Male', 'hcochranea@businessinsider.com', '241.69.23.160', 'LiveZ', 4935.66),
+(12, 'Elfrida Yegorshin', '2876', 'Female', 'eyegorshinb@odnoklassniki.ru', '36.208.43.205', 'Blognation', 2796.26),
+(13, 'Free Pymm', '3211', 'Male', 'fpymmc@oakley.com', '4.232.220.231', 'Realcube', 4050.23),
+(14, 'Prissie Avramovich', '4721', 'Female', 'pavramovichd@nhs.uk', '65.87.4.235', 'Vitz', 1637.76),
+(15, 'Cindie Pinchbeck', '5005', 'Female', 'cpinchbecke@cmu.edu', '7.26.91.164', 'Youopia', 5038.34),
+(16, 'Jerrold Strugnell', '1616', 'Male', 'jstrugnellf@netvibes.com', '15.38.20.244', 'Devpoint', 2947.57);
+
+select * from `users` LIMIT 16;
+
+----------------------------------------------------------------------------
+-- Create table credit-card-enriched (topic with same name will be created)
+----------------------------------------------------------------------------
+CREATE TABLE `credit-card-enriched` (
+  `userid` INT,
+  `credit_card_last_four_digits` STRING,
+  `fullname` STRING,
+  `gender` STRING,
+  `email` STRING,  
+  `ipaddress` STRING,
+  `company` STRING,  
+  `avg_credit_spend` DOUBLE,
+  `amount` DOUBLE,
+  `transaction_id` BIGINT,
+  `timestamp` TIMESTAMP(0),
+  WATERMARK FOR `timestamp` AS `timestamp` - INTERVAL '1' MINUTES
+) WITH (
+  'changelog.mode' = 'retract'
+);
+
+describe extended `credit-card-enriched`;
+
+----------------------------------------------------------------------------------
+-- Merge tables poc-credit-card-transactions and users (non-transactional) 
+----------------------------------------------------------------------------------
+INSERT INTO `credit-card-enriched` (`userid`, `credit_card_last_four_digits`, `fullname`, `gender`, `email`, `ipaddress`, `company`, `amount`, `avg_credit_spend`, `transaction_id`, `timestamp`)
+SELECT
+  u.`userid`,
+  c.`credit_card_last_four_digits`,
+  u.`fullname`,
+  u.`gender`,
+  u.`email`,
+  u.`ipaddress`,
+  u.`company`,
+  c.`amount`,
+  u.`avg_credit_spend`,
+  c.`transaction_id`,
+  c.`timestamp`
+FROM
+  `poc-credit-card-transactions` as c
+LEFT JOIN `users` AS u
+ON
+  c.`credit_card_last_four_digits` = u.`credit_card_last_four_digits`;
+
+select * from `credit-card-enriched`;
+
+
+------------------------------------------------------------------------
+-- Create table possible-fraud (topic with same name will be created)
+------------------------------------------------------------------------
+CREATE TABLE `possible-fraud` (
+  `userid` INT,
+  `credit_card_last_four_digits` STRING,
+  `fullname` STRING,
+  `gender` STRING,
+  `email` STRING, 
+  `timestamp` TIMESTAMP(0),
+  `sum_amount` DOUBLE,
+  `max_avg_credit_spend` DOUBLE,
+  WATERMARK FOR `timestamp` AS `timestamp` - INTERVAL '1' MINUTES
+) WITH (
+  'changelog.mode' = 'retract'
+);
+
+describe extended `possible-fraud`;
+
+-------------------------------------------------------------------------------------------------
+-- Populate table possible-fraud (If sum of amount if greater than average credit card spend)
+-------------------------------------------------------------------------------------------------
+INSERT INTO `possible-fraud`
+SELECT
+  `userid`,
+  `credit_card_last_four_digits`,
+  `fullname`,
+  `gender`,
+  `email`,
+  `window_start`,
+   SUM(`amount`),
+   MAX(`avg_credit_spend`)
+FROM
+  TABLE(
+    TUMBLE(TABLE `credit-card-enriched`, DESCRIPTOR(`timestamp`), INTERVAL '30' SECONDS)
+  )
+GROUP BY `credit_card_last_four_digits`, `userid`, `fullname`, `gender`,`email`, `window_start`
+HAVING
+  SUM(`amount`) > MAX(`avg_credit_spend`);
+
+select * from `possible-fraud`;
 
 ```
+
+### Review Running Flink SQL statements
+  - Access your Environment: `kafka_flink_demo-xx`
+ - Select tab `Flink (preview)`
+ - Select tab `Flink statements`
+ - Filter by Status `Running` (see example below)
+ <img src="docs/flinkSQL.png" width="70%">
 
 <!-- ### Table Model
 [![See the Model]()](https://dbdiagram.io/e/655297567d8bbd64651b96b9/6552975f7d8bbd64651b975b) -->
