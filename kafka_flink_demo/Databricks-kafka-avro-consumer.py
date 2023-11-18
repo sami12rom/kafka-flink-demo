@@ -1,4 +1,4 @@
-# Databricks notebook source
+# Databricks Notebook Source
 # MAGIC %pip install confluent_kafka
 
 # COMMAND ----------
@@ -8,19 +8,21 @@ from pyspark.sql.avro.functions import from_avro
 from pyspark.sql.functions import col, unbase64, explode,map_keys, map_values
 from confluent_kafka.schema_registry import SchemaRegistryClient
 from pyspark.sql.types import *
+from dotenv import load_dotenv
+import os
 import json
 
 # COMMAND ----------
 
 server_uri='pkc-7xoy1.eu-central-1.aws.confluent.cloud:9092'
 topic='poc-pageviews'
-kafka_user='J7ZCOQLV6EVHTIC3'
-kafka_pass='lvVYgVo6740aGVepnog5lWMKNNlFMIuW3RqNKoO3n9suIE33M2v2ctTp4rPc+T4Q'
+kafka_user=os.getenv('CLUSTER_API_KEY')
+kafka_pass=os.getenv('CLUSTER_API_SECRET')
 
 
 registery_uri='https://psrc-v9krz.eu-central-1.aws.confluent.cloud'
-confluentRegistryApiKey='IAD3XFOFUFPVIJ5X'
-confluentRegistrySecret='VmZeVOwuZZEKSfrKrUkGZsDNgIFxCfPQQNpy1RHBjYvDE1bHJhsZtJ1cAZBdoEEV'
+confluentRegistryApiKey=os.getenv('SCHEMA_REGISTRY_API_KEY')
+confluentRegistrySecret=os.getenv('SCHEMA_REGISTRY_API_SECRET')
 schema_registry_conf = {
     'url': registery_uri,
     'basic.auth.user.info': f'{confluentRegistryApiKey}:{confluentRegistrySecret}'}
