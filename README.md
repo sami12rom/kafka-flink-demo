@@ -112,21 +112,21 @@ describe extended `users`;
 -- Populate table users (You will see new messages published in the topic)
 --------------------------------------------------------------------------
 INSERT INTO `users` (`userid`, `fullname`,`credit_card_last_four_digits`, `gender`, `email`, `ipaddress`, `company`, `avg_credit_spend`) VALUES
-(1, 'Lodovico Hinemoor', '1234', 'Male', 'lhinemoor0@wix.com', '72.197.144.165', 'Dynabox', 2650.0),
-(2, 'Panchito Mitchiner', '2345', 'Genderfluid', 'pmitchiner1@senate.gov', '13.246.111.16', 'Aivee', 4119.27),
-(3, 'Zachery Townley', '3456', 'Male', 'ztownley2@mail.ru', '197.231.118.1', 'Fanoodle', 2119.76),
-(4, 'Juli Barcroft', '4567', 'Female', 'jbarcroft3@t-online.de', '138.246.248.76', 'Yodo', 1271.58),
+(1, 'Ellen Ripley', '1234', 'Male', 'lhinemoor0@wix.com', '72.197.144.165', 'Dynabox', 2650.0),
+(2, 'Tony Stark', '2345', 'Genderfluid', 'pmitchiner1@senate.gov', '13.246.111.16', 'Aivee', 4119.27),
+(3, 'Vito Corleone', '3456', 'Male', 'ztownley2@mail.ru', '197.231.118.1', 'Fanoodle', 2119.76),
+(4, 'Lara Croft', '4567', 'Female', 'jbarcroft3@t-online.de', '138.246.248.76', 'Yodo', 1271.58),
 (5, 'Elisabeth Gentry', '5678', 'Female', 'egentry4@homestead.com', '236.176.123.77', 'Skaboo', 2783.47),
 (6, 'Richart Bradfield', '6789', 'Male', 'rbradfield5@amazon.co.uk', '71.180.87.61', 'Meejo', 2154.45),
 (7, 'Helene Hargrove', '7890', 'Female', 'hhargrove6@51.la', '240.88.89.167', 'Browsebug', 2333.36),
 (8, 'Benji Geck', '8901', 'Male', 'bgeck7@sun.com', '250.2.253.193', 'Yombu', 3999.74),
-(9, 'Gannie O''Brollachain', '9012', 'Non-binary', 'gobrollachain8@technorati.com', '185.20.56.89', 'Einti', 3817.99),
+(9, 'Jack Sparrow', '9012', 'Non-binary', 'gobrollachain8@technorati.com', '185.20.56.89', 'Einti', 3817.99),
 (10, 'Elyn Cromarty', '0123', 'Female', 'ecromarty9@ask.com', '167.68.56.180', 'Shufflester', 5263.34),
 (11, 'Hurley Cochrane', '1111', 'Male', 'hcochranea@businessinsider.com', '241.69.23.160', 'LiveZ', 4935.66),
-(12, 'Elfrida Yegorshin', '2876', 'Female', 'eyegorshinb@odnoklassniki.ru', '36.208.43.205', 'Blognation', 2796.26),
-(13, 'Free Pymm', '3211', 'Male', 'fpymmc@oakley.com', '4.232.220.231', 'Realcube', 4050.23),
-(14, 'Prissie Avramovich', '4721', 'Female', 'pavramovichd@nhs.uk', '65.87.4.235', 'Vitz', 1637.76),
-(15, 'Cindie Pinchbeck', '5005', 'Female', 'cpinchbecke@cmu.edu', '7.26.91.164', 'Youopia', 5038.34),
+(12, 'Marty McFly', '2876', 'Female', 'eyegorshinb@odnoklassniki.ru', '36.208.43.205', 'Blognation', 2796.26),
+(13, 'John Wick', '3211', 'Male', 'fpymmc@oakley.com', '4.232.220.231', 'Realcube', 4050.23),
+(14, 'Maximus Decimus Meridius', '4721', 'Female', 'pavramovichd@nhs.uk', '65.87.4.235', 'Vitz', 1637.76),
+(15, 'Severus Snape', '5005', 'Female', 'cpinchbecke@cmu.edu', '7.26.91.164', 'Youopia', 5038.34),
 (16, 'Jerrold Strugnell', '1616', 'Male', 'jstrugnellf@netvibes.com', '15.38.20.244', 'Devpoint', 2947.57);
 
 select * from `users` LIMIT 16;
@@ -227,7 +227,7 @@ select * from `possible-fraud`;
  - Select tab `Flink (preview)`
  - Select tab `Flink statements`
  - Filter by Status `Running` (see example below)
- <img src="docs/flinkSQL.png" width="70%">
+ <img src="docs/runningFlinkSQL.png" width="70%">
 
 <!-- ### Table Model
 [![See the Model]()](https://dbdiagram.io/e/655297567d8bbd64651b96b9/6552975f7d8bbd64651b975b) -->
