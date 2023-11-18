@@ -1,6 +1,3 @@
-![logo](docs/logos.png)
-
-
 # Elevating Analytics with Real-Time Data Streaming: A Deep Dive into Kafka
 ![Azure](https://img.shields.io/badge/azure-%230072C6.svg?style=for-the-badge&logo=microsoftazure&logoColor=white)
 ![Terraform](https://img.shields.io/badge/terraform-%235835CC.svg?style=for-the-badge&logo=terraform&logoColor=white)
@@ -18,7 +15,7 @@
 Welcome to our repository, crafted to highlight the seamless integration and ease of use of Kafka. Dive into:
 
 1. Set up Confluent Cloud, Connectors & Flink.
-2. Set up Confluent Kafka Platform Locally
+<!-- 2. Set up Confluent Kafka Platform Locally -->
 
 
 ## Created by
@@ -28,6 +25,7 @@ This repo has been created by:
 |----|---|---|
 |1|Sami Alashabi|[![](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/sami-alashabi)|
 |2|Maria Berinde-Tampanariu|[![](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/maria-berinde-tampanariu)|
+|3|Ramzi Alashabi|[![](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ramzialashabi/)|
 
 
 
@@ -89,15 +87,6 @@ export CONFLUENT_CLOUD_API_SECRET="Enter credentials here"
 
 ```sql
 
---------------------------------------------------------
--- View demo-pageviews table (from topic with same name)
---------------------------------------------------------
-describe extended `demo-pageviews`;
-
----------------------------------------
-select * from `demo-pageviews`;
----------------------------------------
-
 ---------------------------------------------------------------
 -- Create table demo-users (topic with same name to be created)
 ---------------------------------------------------------------
@@ -111,11 +100,12 @@ CREATE TABLE `demo-users` (
   'changelog.mode' = 'retract'
 );
 
+describe extended `demo-users`;
+
 ----------------------------------------------------------------------
 -- Populate table demo-users (see new messages published in the topic)
 ----------------------------------------------------------------------
-INSERT INTO `demo-users` (`userid`, `full_name`, `regionid`, `gender`,  `avg_credit_spend`) 
-VALUES
+INSERT INTO `demo-users` (`userid`, `full_name`, `regionid`, `gender`,  `avg_credit_spend`) VALUES
   ('User_1', 'Blake Lambert', 'Region_10', 'MALE', 2650.0),
   ('User_2', 'Olivia Anderson', 'Region_20', 'FEMALE', 5721.0),
   ('User_3', 'Evan Hughes', 'Region_30', 'MALE', 4822.0),
@@ -126,14 +116,11 @@ VALUES
   ('User_8', 'Rose Skinner', 'Region_80', 'FEMALE', 4611.0),
   ('User_9', 'Bernadette Cameron', 'Region_90', 'OTHER', 5623.0);
 
----------------------------------------
-select * from `demo-users`;
----------------------------------------
-
 ```
 
-### Table Model
-<iframe width="560" height="315" src='https://dbdiagram.io/e/655297567d8bbd64651b96b9/6552975f7d8bbd64651b975b'> </iframe>
+<!-- ### Table Model
+[![See the Model]()](https://dbdiagram.io/e/655297567d8bbd64651b96b9/6552975f7d8bbd64651b975b) -->
+
 
 ## Stop Demo
 - Run command: `./demo_stop.sh`

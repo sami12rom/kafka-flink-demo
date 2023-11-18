@@ -87,3 +87,4 @@ variable "cc_compute_pool_cfu" {
 # --------------------------------------------
 variable "admin_username" {}
 variable "admin_password" {}
+variable "PBI_API_URL" {}
