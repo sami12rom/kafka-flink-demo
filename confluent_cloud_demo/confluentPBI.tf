@@ -1,6 +1,6 @@
 
 # # Sink Page Views to PowerBI
-# resource "confluent_connector" "pageViewsSink" {
+# resource "confluent_connector" "PowerBI" {
 #   environment {
 #     id = confluent_environment.cc_demo_env.id
 #   }
@@ -60,7 +60,7 @@
 #     prevent_destroy = false
 #   }
 # }
-# output "pageViewsSink" {
+# output "PowerBISink" {
 #   description = "CC Sink to API - PowerBI"
-#   value       = resource.confluent_connector.pageViewsSink.id
+#   value       = resource.confluent_connector.PowerBI.id
 # }

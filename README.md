@@ -65,16 +65,20 @@ brew install jq
 # Set up services for the demo
 
 ## Set environment variables
-- Create file `.env`
+- Create file `.env` inside the confluent_cloud_demo folder
 ```
 #!/bin/bash
 
 # Confluent Platform
 export CONFLUENT_CLOUD_API_KEY="Enter credentials here"
 export CONFLUENT_CLOUD_API_SECRET="Enter credentials here"
+
+export TF_VAR_PBI_API_URL=''
+export TF_VAR_TOPIC_2_PBI=''
+
 ```
 ## Start Demo
-- Run command: `./demo_start.sh`
+- Run command: `./demo_start.sh` inside the confluent_cloud_demo folder
 - Access Confluent Cloud: https://confluent.cloud/login
 - Select your Environment
 - Select tab `Flink (preview)`
